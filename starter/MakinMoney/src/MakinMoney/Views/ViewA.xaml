@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:local="using:MakinMoney.Views"
+             Title="{Binding Title}"
+             Icon="{Binding Icon}"
+             x:Class="MakinMoney.Views.ViewA">
+
+    <ContentPage.ToolbarItems>
+        <iconize:IconToolbarItem Command="{Binding NavigateCommand}" CommandParameter="ViewB" Icon="fa-plus" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <StackLayout.Margin>
+            
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="10,20,10,10" />
+                <On Platform="Android" Value="10" />
+            </OnPlatform>
+        </StackLayout.Margin>
+        <Label Text="{Binding Title}" FontAttributes="Bold" />
+
+        <!-- TODO: Add an AdMob ad here... -->
+    </StackLayout>
+</ContentPage>

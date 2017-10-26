@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+                  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                  xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+                  xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+                  Title="{Binding Title}"
+                  x:Name="view"
+                  x:Class="MakinMoney.Views.MainPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <ContentPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS, Android, macOS" Value="hamburger.png" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </ContentPage.Icon>
+            <StackLayout Padding="20">
+                <Button Text="Classic" Command="{Binding NavigateCommand}" CommandParameter="ViewA" />
+                <Button Text="Tabbed" Command="{Binding NavigateCommand}" CommandParameter="TabbedPage?createTab=ViewA&amp;createTab=ViewB&amp;createTab=ViewC&amp;createTab=ViewD" />
+
+                <!--TODO: Add an AdMob ad here -->
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

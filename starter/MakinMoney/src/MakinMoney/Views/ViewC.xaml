@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:local="using:MakinMoney.Views"
+             xmlns:controls="clr-namespace:MakinMoney.Controls;"
+             Title="{Binding Title}"
+             Icon="{Binding Icon}"
+             x:Class="MakinMoney.Views.ViewC">
+
+    <ContentPage.ToolbarItems>
+        <iconize:IconToolbarItem Command="{Binding NavigateCommand}" CommandParameter="ViewD" Icon="fa-plus" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="adMobTemplate">
+                <ViewCell>
+                    <!-- TODO: Add an AdMob ad here -->
+                    <Label Text="Your AdMob Ad here..." />
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="personTemplate">
+                <TextCell Text="{Binding Name}" />
+            </DataTemplate>
+            <controls:PeopleDataTemplateSelector x:Key="peopleTemplateSelector"
+                                                 AdMobTemplate="{StaticResource adMobTemplate}"
+                                                 PeopleTemplate="{StaticResource personTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ListView ItemsSource="{Binding People}"
+              ItemTemplate="{StaticResource peopleTemplateSelector}"/>
+            
+</ContentPage>
